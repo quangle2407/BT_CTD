@@ -16,18 +16,18 @@ B3/
 ├── reader.c, reader.h           # helper đọc file
 ├── token.c, token.h             # định nghĩa token
 ├── error.c, error.h             # xử lý lỗi
-├── Makefile                      # build script
-├── run_tests.ps1                 # script test (PowerShell)
-├── parser.exe                    # binary (nếu đã build)
-├── test/                         # thư mục chứa các case test
-└── *.o                           # các object files
+├── Makefile                     # build script
+├── run_tests.ps1                # script test (PowerShell)
+├── parser.exe                   # binary (nếu đã build)
+├── test/                        # thư mục chứa các case test
+└── *.o                          # các object files
 ```
 
 ## Mục tiêu bài tập
 
-- Viết hoặc hoàn thiện `parser.c` để chuyển dãy token thành cấu trúc cú pháp (AST hoặc biểu diễn trung gian).
-- Báo lỗi cú pháp với vị trí (dòng, cột) rõ ràng.
-- Tích hợp với scanner sẵn có để chạy end-to-end: source.kpl -> tokens -> parse -> output/diagnostics.
+* Viết hoặc hoàn thiện `parser.c` để chuyển dãy token thành cấu trúc cú pháp (AST hoặc biểu diễn trung gian).
+* Báo lỗi cú pháp với vị trí (dòng, cột) rõ ràng.
+* Tích hợp với scanner sẵn có để chạy end-to-end: source.kpl -> tokens -> parse -> output/diagnostics.
 
 ## Biên dịch
 
@@ -52,13 +52,13 @@ gcc reader.o token.o scanner.o parser.o error.o main.o -o parser.exe
 
 ## Chạy
 
-- Chạy binary với một file nguồn KPL:
+* Chạy binary với một file nguồn KPL:
 
 ```powershell
 .\parser.exe .\test\example1.kpl
 ```
 
-- Chạy toàn bộ test cases (nếu có script):
+* Chạy toàn bộ test cases (nếu có script):
 
 ```powershell
 .\run_tests.ps1
@@ -68,21 +68,16 @@ Script `run_tests.ps1` sẽ so sánh output của chương trình với các fil
 
 ## Gợi ý phát triển & debug
 
-- Kiểm tra `token.h` và `scanner.c` để hiểu định dạng token đầu vào cho parser.
-- Bắt đầu từ các quy tắc ngữ pháp đơn giản, viết parser theo phương pháp recursive descent nếu phù hợp.
-- Ghi log/token stream ra file tạm để dễ debug.
-- Dùng `make clean` trước khi build lại nếu gặp vấn đề với object cũ.
+* Kiểm tra `token.h` và `scanner.c` để hiểu định dạng token đầu vào cho parser.
+* Bắt đầu từ các quy tắc ngữ pháp đơn giản, viết parser theo phương pháp recursive descent nếu phù hợp.
+* Ghi log/token stream ra file tạm để dễ debug.
+* Dùng `make clean` trước khi build lại nếu gặp vấn đề với object cũ.
 
 ## Kiểm thử
 
-- Thêm các trường hợp biên dịch lỗi vào `test/` (ví dụ: `err1.kpl`, `err1.result.txt`) để kiểm thử thông báo lỗi.
-- So sánh kết quả parse (hoặc diagnostics) với file `result*.txt` để xác nhận.
+* Thêm các trường hợp biên dịch lỗi vào `test/` (ví dụ: `err1.kpl`, `err1.result.txt`) để kiểm thử thông báo lỗi.
+* So sánh kết quả parse (hoặc diagnostics) với file `result*.txt` để xác nhận.
 
 ## Lưu ý
 
-- Nếu bạn sử dụng Windows mà chưa có `make`, cài `make` (MinGW/MSYS2) hoặc dùng lệnh gcc thủ công.
-- Cập nhật `README.md` này nếu bạn thêm file/tiện ích mới vào `B3`.
-
----
-
-**Cập nhật lần cuối:** 01/12/2025
+* Nếu bạn sử dụng Windows mà chưa có `make`, cài `make` (MinGW/MSYS2) hoặc dùng lệnh gcc thủ công.
